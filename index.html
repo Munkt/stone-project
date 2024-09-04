@@ -3,33 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alt Mountain</title>
+    <title>Mountain</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/css/style.min.css" />
   </head>
   <body>
-    <button>You've Reached the top</button>
-    <span class="stone">
-      <img src="/images/Ellipse 1.png" />
-    </span>
-    <span class="stone">
-      <img src="/images/Ellipse 2.png" />
-    </span>
-    <span class="stone">
-      <img src="/images/Ellipse 3.png" />
-    </span>
-    <span class="stone">
-      <img src="/images/Ellipse 4.png" />
-    </span>
-    <span class="stone">
-      <img src="/images/Ellipse 5.png" />
-    </span>
-    <div id="greeting">
-      <h1>Alternative Mountain</h1>
-      <h2>Welcome, Start climbing and collect stones.</h2>
+    <div class="altitude">
+      <span>Altitude:</span>
+      <span id="altitude-data">px</span>
     </div>
-    <div id="pocket">
-      <h3>Pocket</h3>
-      <div id="pocket_container"></div>
+    <button class="i">i</button>
+    <section class="peek"></section>
+    <section class="ground">
+      <span class="stone" data-meaning="courage">
+        <img src="/images/Ellipse 1.png" />
+      </span>
+      <span class="stone" data-meaning="gratitude">
+        <img src="/images/Ellipse 2.png" />
+      </span>
+      <span class="stone" data-meaning="belief">
+        <img src="/images/Ellipse 3.png" />
+      </span>
+      <span class="stone" data-meaning="love">
+        <img src="/images/Ellipse 4.png" />
+      </span>
+      <span class="stone" data-meaning="confidence">
+        <img src="/images/Ellipse 5.png" />
+      </span>
+    </section>
+    <div class="greeting">
+      <h1>Alternative Mountain</h1>
+      <h2>Welcome to this spiritual mountain.<br />to start climbing, scroll up</h2>
+    </div>
+    <div class="pocket_bar">
+      <button id="openCanvas_btn">I want to stack</button>
+      <div class="pocket">
+        <span>Pocket</span>
+        <div id="pocket_container"></div>
+      </div>
     </div>
     <script src="/js/stone.js"></script>
   </body>
