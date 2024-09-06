@@ -101,11 +101,16 @@ body {
   }
 }
 
+span.stone.in-pocket {
+  position: static;
+  margin-right: 10px;
+}
+
 .ground {
-  position: relative;
   display: flex;
+  position: relative;
   width: 100vw;
-  height: 100 * 5vh;
+  height: 500vh;
 }
 
 .stone {
@@ -135,7 +140,17 @@ body {
   }
 }
 
-// span.stone.in-pocket {
-//   position: static; /* pocket 안에서는 정적 위치로 변경 */
-//   margin-right: 10px; /* 각 돌 사이에 간격을 줄 수 있습니다 */
-// }
+// parallax bg 배경 설정
+.parallax_bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.parallax_bg img {
+  width: 100%;
+  height: auto;
+}
