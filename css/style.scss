@@ -76,14 +76,33 @@ body {
   left: 50%;
   transform: translateX(-50%);
   bottom: 0px;
-  #openCanvas_btn {
+}
+
+#stoneStacker {
+  width: 57.77rem;
+  height: 47.77rem;
+  left: 50%;
+  bottom: -3.2rem;
+  transform: translateX(-50%);
+  background-color: white;
+  z-index: 1;
+  display: none;
+}
+
+.button_bar {
+  flex-direction: row;
+  button {
     padding: 0.5rem 0.77rem 0.55rem 0.77rem;
-    background-color: var(--yellow);
     margin-bottom: 1.11rem;
+    background-color: var(--yellow);
+    cursor: pointer;
+  }
+  #hidePocket_btn {
+    background-color: white;
   }
 }
 
-.pocket {
+#pocket {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -94,16 +113,11 @@ body {
     margin-right: 1rem;
   }
   #pocket_container {
-    display: flex;
     justify-content: start;
     align-items: center;
     height: 5.11rem;
+    width: 50.33rem;
   }
-}
-
-span.stone.in-pocket {
-  position: static;
-  margin-right: 10px;
 }
 
 .ground {
@@ -114,19 +128,22 @@ span.stone.in-pocket {
 }
 
 .stone {
+  position: absolute;
+  cursor: pointer;
+
   &:nth-child(1) {
     top: 10px;
     left: 20px;
   }
 
   &:nth-child(2) {
-    top: 50px;
-    left: 100px;
+    top: 150px;
+    left: 800px;
   }
 
   &:nth-child(3) {
-    top: 90px;
-    left: 180px;
+    top: 400px;
+    left: 900px;
   }
 
   &:nth-child(4) {
@@ -135,9 +152,22 @@ span.stone.in-pocket {
   }
 
   &:nth-child(5) {
-    top: 170px;
-    left: 340px;
+    top: 240px;
+    left: 450px;
   }
+  &:nth-child(6) {
+    top: 600px;
+    left: 150px;
+  }
+  &:nth-child(7) {
+    top: 900px;
+    left: 700px;
+  }
+}
+
+span.stone.in-pocket {
+  position: static;
+  margin-right: 10px;
 }
 
 // parallax bg 배경 설정

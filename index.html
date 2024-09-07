@@ -18,19 +18,25 @@
     <section class="peek"></section>
     <section class="ground">
       <span class="stone" data-meaning="courage">
-        <img src="/images/Ellipse 1.png" />
+        <img src="/images/ellipse_1.png" />
       </span>
       <span class="stone" data-meaning="gratitude">
-        <img src="/images/Ellipse 2.png" />
+        <img src="/images/ellipse_2.png" />
       </span>
       <span class="stone" data-meaning="belief">
-        <img src="/images/Ellipse 3.png" />
+        <img src="/images/ellipse_3.png" />
       </span>
       <span class="stone" data-meaning="love">
-        <img src="/images/Ellipse 4.png" />
+        <img src="/images/ellipse_4.png" />
       </span>
       <span class="stone" data-meaning="confidence">
-        <img src="/images/Ellipse 5.png" />
+        <img src="/images/ellipse_5.png" />
+      </span>
+      <span class="stone" data-meaning="undefined">
+        <img src="/images/ellipse_6.png" />
+      </span>
+      <span class="stone" data-meaning="undefined">
+        <img src="/images/ellipse_7.png" />
       </span>
       <div class="parallax_bg">
         <img class="parallax_up" src="/images/bg/layer_1.png" alt="image" />
@@ -41,8 +47,12 @@
       <h2>Welcome to this spiritual mountain.<br />to start climbing, scroll up</h2>
     </div>
     <div class="pocket_bar">
-      <button id="openCanvas_btn">I want to stack</button>
-      <div class="pocket">
+      <canvas id="stoneStacker"></canvas>
+      <div class="button_bar">
+        <button id="openCanvas_btn">I want to stack</button>
+        <button id="hidePocket_btn">close</button>
+      </div>
+      <div id="pocket">
         <span>Pocket</span>
         <div id="pocket_container"></div>
       </div>
