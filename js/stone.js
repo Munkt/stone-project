@@ -1,15 +1,14 @@
-//작동 안함 https://github.com/geosigno/simpleParallax.js
-// import SimpleParallax from "simple-parallax-js/vanilla";
-// const image = document.getElementsByClassName("parallax_up");
-// new SimpleParallax(image);
-
 const myStones = document.getElementsByClassName("stone");
 const myPocket = document.getElementById("pocket_container");
-const stoneStackerCanvas = document.getElementById("stoneStacker");
-const pocketHideBtn = document.getElementById("hidePocket_btn");
+const myCanvas = document.getElementById("stoneStacker");
+const ctx = myCanvas.getContext("2d"); // 2D context
+
+const btnBar = document.getElementById("button_bar");
+const btnBar2 = document.getElementById("button_bar2");
 const openCanvasBtn = document.getElementById("openCanvas_btn");
+const closeCanvasBtn = document.getElementById("closeCanvas_btn");
 const originalPositions = {};
-const maxStoneCount = 3;
+const maxStoneCount = 5;
 
 //문서를 맨 아래에서부터 시작
 function scrollBottom() {
@@ -23,42 +22,50 @@ function moveStone(event) {
   const currentStoneCount = myPocket.children.length;
 
   if (stone.parentElement === myPocket) {
-    //돌이 pocket에 있는 경우 원래 위치로 돌려놓기
+    // Move stone back to its original position
     const originalPosition = originalPositions[stone];
     originalPosition.appendChild(stone);
-    stone.classList.remove("in-pocket"); //css에
+    stone.classList.remove("in-pocket");
   } else {
     if (currentStoneCount >= maxStoneCount) {
-      alert("주머니가 너무 무거워요! (°◇°;)");
+      alert("Your pocket is too heavy!! (°◇°;)");
       return;
     }
-    //돌을 pocket으로 이동
-    originalPositions[stone] = stone.parentElement; // 원래 위치 저장
+    // Move the stone to the pocket
+    originalPositions[stone] = stone.parentElement;
     myPocket.appendChild(stone);
     stone.classList.add("in-pocket");
-    document;
-  }
-}
-
-function pocketHide() {
-  const myBigPocket = document.getElementById("pocket");
-  if (myBigPocket.style.display === "none") {
-    myBigPocket.style.display = "block";
-    document.getElementById("hidePocket_btn").innerText = "close";
-  } else {
-    myBigPocket.style.display = "none";
-    document.getElementById("hidePocket_btn").innerText = "open";
   }
 }
 
 function openCanvas() {
-  stoneStackerCanvas.style.display = "block";
+  myCanvas.style.display = "block";
+  btnBar2.style.display = "block";
+  btnBar.style.display = "none";
+}
+
+function showOpenCanvasBtn() {
+  if (window.scrollY === 0) {
+    openCanvasBtn.style.display = "block";
+  } else {
+    openCanvasBtn.style.display = "none";
+  }
+}
+
+function closeCanvas() {
+  myCanvas.style.display = "none";
+  btnBar2.style.display = "none";
+  btnBar.style.display = "inline";
 }
 
 // HTMLCollection을 배열로 변환 후 각 요소에 이벤트 리스너 추가
 Array.from(myStones).forEach((stone) => {
   stone.addEventListener("click", moveStone);
 });
+
+//스크롤 이벤트 추가
+window.addEventListener("scroll", showOpenCanvasBtn);
+
 // 버튼 열고 닫기
-pocketHideBtn.addEventListener("click", pocketHide);
 openCanvasBtn.addEventListener("click", openCanvas);
+closeCanvasBtn.addEventListener("click", closeCanvas);
