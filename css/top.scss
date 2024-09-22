@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+html {
+  font-size: 16px;
+  font-family: "Arial Narrow", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  position: relative;
+}
+
+#stoneContainer2 {
+  flex-direction: row;
+  height: 5rem;
+  gap: 10px;
+  display: flex; // for now
+  //   display: none;
+}
+
+#canvas {
+  border: 1px solid #000;
+  //   display: none;
+}
+
+#collection {
+  width: 100vw;
+  height: 100vh;
+  background-color: aquamarine;
+}
+
+#collection img {
+  max-width: 200px;
+  margin: 10px;
+  border: 1px solid #000;
+}
