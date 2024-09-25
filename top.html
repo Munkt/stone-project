@@ -7,24 +7,40 @@
     <link rel="stylesheet" href="/css/top.min.css" />
   </head>
   <body>
-    <button id="openCanvasBtn">I want to stack</button>
-    <div id="stoneContainer2">
-      <img class="stone" src="/images/stone-element/stone_1.svg" />
-      <img class="stone" src="/images/stone-element/stone_2.svg" />
-      <img class="stone" src="/images/stone-element/stone_3.svg" />
-      <img class="stone" src="/images/stone-element/stone_4.svg" />
-      <img class="stone" src="/images/stone-element/stone_5.svg" />
-      <img class="stone" src="/images/stone-element/stone_6.svg" />
-      <img class="stone" src="/images/stone-element/stone_7.svg" />
-      <img class="stone" src="/images/stone-element/stone_8.svg" />
-      <img class="stone" src="/images/stone-element/stone_9.svg" />
-      <img class="stone" src="/images/stone-element/stone_10.svg" />
-      <img class="stone" src="/images/stone-element/stone_11.svg" />
-      <img class="stone" src="/images/stone-element/stone_12.svg" />
+    <div class="btnBar">
+      <button id="openCanvasBtn">I want to stack</button>
+      <button id="closeCanvasBtn">I don't want to stack</button>
+      <a href="./mountain.html" id="goDown">Go down</a>
     </div>
-    <canvas id="canvas" width="800" height="800"></canvas>
-    <button id="stack">Stack</button>
     <div id="collection"></div>
+    <div id="canvasPocket">
+      <div id="canvasContainer">
+        <h3>Stone Stacker</h3>
+        <canvas id="canvas" width="420" height="534"></canvas>
+        <div class="canvasBtnBar">
+          <input type="text" id="message" placeholder="Add a message" maxlength="100" size="10" />
+          <button id="stack">Stack</button>
+          <button id="reset">Reset</button>
+        </div>
+      </div>
+      <div class="pocket">
+        <h3>Pocket</h3>
+        <div id="stoneContainer2">
+          <img class="stone" src="/images/stone-element/stone_1.svg" />
+          <img class="stone" src="/images/stone-element/stone_2.svg" />
+          <img class="stone" src="/images/stone-element/stone_3.svg" />
+          <img class="stone" src="/images/stone-element/stone_4.svg" />
+          <img class="stone" src="/images/stone-element/stone_5.svg" />
+          <img class="stone" src="/images/stone-element/stone_6.svg" />
+          <img class="stone" src="/images/stone-element/stone_7.svg" />
+          <img class="stone" src="/images/stone-element/stone_8.svg" />
+          <img class="stone" src="/images/stone-element/stone_9.svg" />
+          <img class="stone" src="/images/stone-element/stone_10.svg" />
+          <img class="stone" src="/images/stone-element/stone_11.svg" />
+          <img class="stone" src="/images/stone-element/stone_12.svg" />
+        </div>
+      </div>
+    </div>
     <script src="js/top.js"></script>
   </body>
 </html>
