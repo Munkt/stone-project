@@ -4,64 +4,173 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mountain</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/css/style.min.css" />
+    <link rel="stylesheet" href="/css/mountainstyle.min.css" />
   </head>
   <body>
-    <div class="altitude">
-      <span>Altitude:</span>
-      <span id="altitude-data">px</span>
-    </div>
-    <button class="i">i</button>
-    <section class="peek"></section>
-    <section class="ground">
-      <span class="stone" data-meaning="courage">
-        <img src="/images/ellipse_1.png" />
-      </span>
-      <span class="stone" data-meaning="gratitude">
-        <img src="/images/ellipse_2.png" />
-      </span>
-      <span class="stone" data-meaning="belief">
-        <img src="/images/ellipse_3.png" />
-      </span>
-      <span class="stone" data-meaning="love">
-        <img src="/images/ellipse_4.png" />
-      </span>
-      <span class="stone" data-meaning="confidence">
-        <img src="/images/ellipse_5.png" />
-      </span>
-      <span class="stone" data-meaning="undefined">
-        <img src="/images/ellipse_6.png" />
-      </span>
-      <span class="stone" data-meaning="undefined">
-        <img src="/images/ellipse_7.png" />
-      </span>
-      <div class="parallax_bg">
-        <img class="parallax_up" src="/images/bg/layer_1.png" alt="image" />
-      </div>
-    </section>
-    <div class="greeting">
-      <h1>Alternative Mountain</h1>
-      <h2>Welcome to this spiritual mountain.<br />to start climbing, scroll up</h2>
-    </div>
-    <div class="pocket_bar">
-      <canvas id="stoneStacker"></canvas>
-      <div id="button_bar">
-        <button id="openCanvas_btn">I want to stack</button>
-      </div>
-      <div id="button_bar2">
-        <input placeholder="enter your wish" />
-        <button id="stack">stack!</button>
-        <button id="closeCanvas_btn">close</button>
-      </div>
-      <div id="pocket">
-        <span>Pocket</span>
-        <div id="pocket_container"></div>
+    <a href="top.html" class="button">climb to the top</a>
+    <div class="pocket">
+      <h3>Pocket</h3>
+      <div class="stoneContainer">
+        <div class="container" data-index="1"></div>
+        <div class="container" data-index="2"></div>
+        <div class="container" data-index="3"></div>
+        <div class="container" data-index="4"></div>
+        <div class="container" data-index="5"></div>
+        <div class="container" data-index="6"></div>
+        <div class="container" data-index="7"></div>
+        <div class="container" data-index="8"></div>
+        <div class="container" data-index="9"></div>
+        <div class="container" data-index="10"></div>
+        <div class="container" data-index="11"></div>
+        <div class="container" data-index="12"></div>
+        <div class="container" data-index="13"></div>
+        <div class="container" data-index="14"></div>
+        <div class="container" data-index="15"></div>
+        <div class="container" data-index="16"></div>
+        <div class="container" data-index="17"></div>
+        <div class="container" data-index="18"></div>
+        <div class="container" data-index="19"></div>
+        <div class="container" data-index="20"></div>
+        <div class="container" data-index="21"></div>
       </div>
     </div>
-    <script src="/js/stone.js"></script>
-    <!-- <script src="/js/parallax.js"></script> -->
+    <div class="stones">
+      <img class="stone" data-index="1" src="/images/stone-element/stone_1.svg" />
+      <img class="stone" data-index="2" src="/images/stone-element/stone_2.svg" />
+      <img class="stone" data-index="3" src="/images/stone-element/stone_3.svg" />
+      <img class="stone" data-index="4" src="/images/stone-element/stone_4.svg" />
+      <img class="stone" data-index="5" src="/images/stone-element/stone_5.svg" />
+      <img class="stone" data-index="6" src="/images/stone-element/stone_6.svg" />
+      <img class="stone" data-index="7" src="/images/stone-element/stone_7.svg" />
+      <img class="stone" data-index="8" src="/images/stone-element/stone_8.svg" />
+      <img class="stone" data-index="9" src="/images/stone-element/stone_9.svg" />
+      <img class="stone" data-index="10" src="/images/stone-element/stone_10.svg" />
+      <img class="stone" data-index="11" src="/images/stone-element/stone_11.svg" />
+      <img class="stone" data-index="12" src="/images/stone-element/stone_12.svg" />
+      <img class="stone" data-index="13" src="/images/stone-element/stone_13.svg" />
+      <img class="stone" data-index="14" src="/images/stone-element/stone_14.svg" />
+      <img class="stone" data-index="15" src="/images/stone-element/stone_15.svg" />
+      <img class="stone" data-index="16" src="/images/stone-element/stone_16.svg" />
+      <img class="stone" data-index="17" src="/images/stone-element/stone_17.svg" />
+      <img class="stone" data-index="18" src="/images/stone-element/stone_18.svg" />
+      <img class="stone" data-index="19" src="/images/stone-element/stone_19.svg" />
+      <img class="stone" data-index="20" src="/images/stone-element/stone_20.svg" />
+      <img class="stone" data-index="21" src="/images/stone-element/stone_21.svg" />
+    </div>
+    <div class="parallax-wrap">
+      <span value="-5"><img src="/images/parallax-element/bg_1.svg" /></span>
+      <span value="3"><img src="/images/parallax-element/bg_2.svg" /></span>
+      <span value="5"><img src="/images/parallax-element/bg_3.svg" /></span>
+      <span value="-3"><img src="/images/parallax-element/bg_4.svg" /></span>
+      <span value="-5"><img src="/images/parallax-element/bg_5.svg" /></span>
+      <span value="3"><img src="/images/parallax-element/bg_6.svg" /></span>
+      <span value="5"><img src="/images/parallax-element/bg_7.svg" /></span>
+      <span value="-1"><img src="/images/parallax-element/bg_8.png" /></span>
+      <span value="-5"><img src="/images/parallax-element/bg_9.svg" /></span>
+      <span value="3"><img src="/images/parallax-element/bg_10.svg" /></span>
+      <span value="5"><img src="/images/parallax-element/bg_11.svg" /></span>
+      <span value="-3"><img src="/images/parallax-element/bg_12.svg" /></span>
+      <span value="-5"><img src="/images/parallax-element/bg_13.svg" /></span>
+      <span value="3"><img src="/images/parallax-element/bg_14.svg" /></span>
+      <span value="5"><img src="/images/parallax-element/bg_15.svg" /></span>
+      <span value="-3"><img src="/images/parallax-element/bg_16.svg" /></span>
+      <span value="-5"><img src="/images/parallax-element/bg_17.svg" /></span>
+      <span value="3"><img src="/images/parallax-element/bg_18.svg" /></span>
+      <span value="5"><img src="/images/parallax-element/bg_19.svg" /></span>
+      <span value="-3"><img src="/images/parallax-element/bg_20.svg" /></span>
+      <span value="-5"><img src="/images/parallax-element/bg_21.svg" /></span>
+      <span value="3"><img src="/images/parallax-element/bg_22.png" /></span>
+      <span value="6"><img src="/images/parallax-element/bg_23.svg" /></span>
+      <span value="-3"><img src="/images/parallax-element/bg_24.svg" /></span>
+      <span value="-4"><img src="/images/parallax-element/bg_25.svg" /></span>
+      <span value="3"><img src="/images/parallax-element/bg_26.svg" /></span>
+      <span value="4"><img src="/images/parallax-element/bg_27.svg" /></span>
+      <span value="-2"><img src="/images/parallax-element/bg_28.svg" /></span>
+      <span value="-5"><img src="/images/parallax-element/bg_29.png" /></span>
+      <span value="3"><img src="/images/parallax-element/bg_30.svg" /></span>
+      <span value="4"><img src="/images/parallax-element/bg_31.svg" /></span>
+      <span value="-2"><img src="/images/parallax-element/bg_32.svg" /></span>
+      <span value="-5"><img src="/images/parallax-element/bg_33.svg" /></span>
+      <span value="3"><img src="/images/parallax-element/bg_34.png" /></span>
+      <span value="5"><img src="/images/parallax-element/bg_35.svg" /></span>
+      <span value="-4"><img src="/images/parallax-element/bg_36.svg" /></span>
+      <span value="-5"><img src="/images/parallax-element/bg_37.svg" /></span>
+      <span value="2"><img src="/images/parallax-element/bg_38.svg" /></span>
+      <span value="4"><img src="/images/parallax-element/bg_39.svg" /></span>
+      <span value="-3"><img src="/images/parallax-element/bg_40.svg" /></span>
+      <span value="-5"><img src="/images/parallax-element/bg_41.svg" /></span>
+      <span value="2"><img src="/images/parallax-element/bg_42.svg" /></span>
+      <span value="3"><img src="/images/parallax-element/bg_43.svg" /></span>
+      <span value="-3"><img src="/images/parallax-element/bg_44.svg" /></span>
+      <span value="-4"><img src="/images/parallax-element/bg_45.svg" /></span>
+      <span value="4"><img src="/images/parallax-element/bg_46.svg" /></span>
+      <span value="5"><img src="/images/parallax-element/bg_47.svg" /></span>
+      <span value="-3"><img src="/images/parallax-element/bg_48.svg" /></span>
+      <span value="-5"><img src="/images/parallax-element/bg_49.svg" /></span>
+      <span value="3"><img src="/images/parallax-element/bg_50.svg" /></span>
+      <span value="5"><img src="/images/parallax-element/bg_51.svg" /></span>
+      <span value="-2"><img src="/images/parallax-element/bg_52.svg" /></span>
+      <span value="-4"><img src="/images/parallax-element/bg_53.svg" /></span>
+      <span value="3"><img src="/images/parallax-element/bg_54.svg" /></span>
+      <span value="5"><img src="/images/parallax-element/bg_55.svg" /></span>
+      <span value="-3"><img src="/images/parallax-element/bg_56.svg" /></span>
+      <span value="-5"><img src="/images/parallax-element/bg_57.svg" /></span>
+      <span value="2"><img src="/images/parallax-element/bg_58.svg" /></span>
+      <span value="4"><img src="/images/parallax-element/bg_59.svg" /></span>
+      <span value="-3"><img src="/images/parallax-element/bg_60.svg" /></span>
+      <span value="-4"><img src="/images/parallax-element/bg_61.svg" /></span>
+      <span value="3"><img src="/images/parallax-element/bg_62.svg" /></span>
+      <span value="5"><img src="/images/parallax-element/bg_63.svg" /></span>
+      <span value="-3"><img src="/images/parallax-element/bg_64.svg" /></span>
+      <span value="-5"><img src="/images/parallax-element/bg_65.svg" /></span>
+      <span value="3"><img src="/images/parallax-element/bg_66.svg" /></span>
+      <span value="4"><img src="/images/parallax-element/bg_67.svg" /></span>
+      <span value="-2"><img src="/images/parallax-element/bg_68.svg" /></span>
+      <span value="-3"><img src="/images/parallax-element/bg_69.svg" /></span>
+      <span value="4"><img src="/images/parallax-element/bg_70.svg" /></span>
+      <span value="5"><img src="/images/parallax-element/bg_71.svg" /></span>
+      <span value="-2"><img src="/images/parallax-element/bg_72.svg" /></span>
+      <span value="-4"><img src="/images/parallax-element/bg_73.svg" /></span>
+      <span value="3"><img src="/images/parallax-element/bg_74.svg" /></span>
+      <span value="5"><img src="/images/parallax-element/bg_75.svg" /></span>
+      <span value="-2"><img src="/images/parallax-element/bg_76.png" /></span>
+      <span value="-3"><img src="/images/parallax-element/bg_77.png" /></span>
+      <span value="2"><img src="/images/parallax-element/bg_78.svg" /></span>
+      <span value="4"><img src="/images/parallax-element/bg_79.svg" /></span>
+      <span value="-3"><img src="/images/parallax-element/bg_80.svg" /></span>
+      <span value="-5"><img src="/images/parallax-element/bg_81.svg" /></span>
+      <span value="2"><img src="/images/parallax-element/bg_82.svg" /></span>
+      <span value="4"><img src="/images/parallax-element/bg_83.svg" /></span>
+      <span value="-4"><img src="/images/parallax-element/bg_84.svg" /></span>
+      <span value="-5"><img src="/images/parallax-element/bg_85.svg" /></span>
+      <span value="3"><img src="/images/parallax-element/bg_86.svg" /></span>
+      <span value="5"><img src="/images/parallax-element/bg_87.png" /></span>
+      <span value="-2"><img src="/images/parallax-element/bg_88.svg" /></span>
+      <span value="-4"><img src="/images/parallax-element/bg_89.svg" /></span>
+      <span value="3"><img src="/images/parallax-element/bg_90.svg" /></span>
+      <span value="5"><img src="/images/parallax-element/bg_91.svg" /></span>
+      <span value="-3"><img src="/images/parallax-element/bg_92.svg" /></span>
+      <span value="-5"><img src="/images/parallax-element/bg_93.svg" /></span>
+      <div class="sign">
+        <div class="greeting">
+          <h2>Mount Web</h2>
+          <p>
+            This space is to just simply take a break<br />
+            from the noises around you and climb up a website.<br />
+            Pay a close attention to the stones and listen carefully<br />
+            to what they have to say.
+          </p>
+          <div>
+            <h3>Instruction</h3>
+            <p>
+              Climb this website, find stones <br />
+              and add the ones you like to your collection.
+            </p>
+          </div>
+        </div>
+        <div class="stick"></div>
+      </div>
+    </div>
+    <script src="/js/mountain.js"></script>
   </body>
 </html>
