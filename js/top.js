@@ -12,6 +12,10 @@ let isDragging = false;
 let dragIndex = -1;
 let offsetX, offsetY;
 
+document.getElementById("goDown").addEventListener("click", function () {
+  window.location.href = "./index.html"; // Redirect to the link
+});
+
 function toggleCanvas() {
   // 캔버스를 열고 닫는 함수
   canvasPocket.classList.toggle("active");
@@ -146,7 +150,7 @@ canvas.addEventListener("mouseup", () => {
   dragIndex = -1;
 });
 
-let placedArtworks = []; // Track positions and dimensions of placed artworks
+let placedArtworks = [];
 
 stackBtn.addEventListener("click", () => {
   const message = messageInput.value.trim(); // Get message input value
@@ -155,26 +159,27 @@ stackBtn.addEventListener("click", () => {
     return;
   }
 
+  const canvasPocket = document.getElementById("canvasPocket");
+  canvasPocket.style.display = "none";
+
   const artworkImage = new Image();
   artworkImage.src = canvas.toDataURL("image/png");
 
   const artworkElement = document.createElement("div"); // Create a div to hold the image
   artworkElement.style.position = "absolute"; // Allow random positioning
-  artworkElement.style.width = "200px"; // Set fixed width for the artwork
-  artworkElement.style.marginBottom = "1rem"; // Add some space between stacked items
+  artworkElement.style.width = "200px";
+  artworkElement.style.marginBottom = "1rem";
 
   let randomX, randomY;
   let isOverlapping = true;
 
   // Check for overlap and regenerate position if needed
   do {
-    // Generate random X and Y within the new collection dimensions
     randomX = Math.random() * (document.documentElement.clientWidth * 2 - 220); // 200vw width
-    randomY = Math.random() * (window.innerHeight - 240); // 100vh height
+    randomY = Math.random() * (window.innerHeight - 240);
 
-    // Check if new artwork overlaps with any placed artwork
     isOverlapping = placedArtworks.some((artwork) => {
-      const buffer = 20; // Add a small buffer to prevent near overlaps
+      const buffer = 20;
       return randomX < artwork.x + artwork.width + buffer && randomX + 200 > artwork.x - buffer && randomY < artwork.y + artwork.height + buffer && randomY + 200 > artwork.y - buffer;
     });
   } while (isOverlapping);

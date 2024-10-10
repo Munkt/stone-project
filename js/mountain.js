@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("scroll", () => {
   const pocket = document.querySelector(".pocket");
-  if (window.scrollY < 15960) {
+  if (window.scrollY < 15500) {
     pocket.style.right = "2rem";
   } else {
     pocket.style.right = "-20rem";

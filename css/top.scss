@@ -1,15 +1,16 @@
 * {
   margin: 0;
   padding: 0;
-  text-decoration: none;
   list-style: none;
   box-sizing: border-box;
 }
+
 html {
   font-size: 16px;
   text-decoration: none;
-  font-family: "Space Mono", system-ui;
-  font-weight: 400;
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
   font-style: normal;
 }
 
@@ -21,7 +22,7 @@ html {
 body {
   position: relative;
 }
-//버튼 바
+
 .btnBar {
   display: flex;
   flex-direction: row;
@@ -31,29 +32,20 @@ body {
   bottom: 2rem;
   z-index: 10;
 }
-.btnBar button,
-.btnBar a {
+.btnBar button {
+  font-family: "Space Grotesk", sans-serif;
   height: 2.725rem;
   padding: 0rem 1rem;
   border: none;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
 }
+
 #openCanvasBtn {
   background-color: var(--yellow);
 }
 #closeCanvasBtn {
   background-color: var(--yellow);
   display: none;
-}
-#goDown {
-  background-color: var(--grey);
-  color: black;
-  text-align: center;
-  text-decoration: none;
 }
 //배경 갤러리
 #collection {
