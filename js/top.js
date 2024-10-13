@@ -170,6 +170,7 @@ canvas.addEventListener("mouseup", () => {
 });
 
 stackBtn.addEventListener("click", () => {
+  //캔버스 안내 메세지
   const message = messageInput.value.trim();
   if (!message && canvasStones.length === 0) {
     alert("Add something before stacking.");
