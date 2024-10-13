@@ -51,6 +51,26 @@ window.onload = () => {
 // Load artworks from localStorage when the page loads
 window.onload = loadFromLocalStorage;
 
+const preloadedImages = document.querySelectorAll(".preloaded-image");
+
+preloadedImages.forEach((imageContainer) => {
+  const img = imageContainer.querySelector("img");
+  const tooltip = imageContainer.querySelector(".tooltip");
+
+  img.addEventListener("mouseover", () => {
+    tooltip.style.display = "block"; // Show the message (tooltip)
+  });
+
+  img.addEventListener("mousemove", (e) => {
+    tooltip.style.top = `${e.clientY + 15}px`; // Position tooltip near the mouse
+    tooltip.style.left = `${e.clientX + 15}px`;
+  });
+
+  img.addEventListener("mouseout", () => {
+    tooltip.style.display = "none"; // Hide the message (tooltip)
+  });
+});
+
 document.getElementById("goDown").addEventListener("click", function () {
   window.location.href = "./index.html"; // Redirect to the link
 });
@@ -90,9 +110,32 @@ function drawStones() {
 }
 
 function getRandomPosition(imgWidth, imgHeight) {
-  const x = Math.random() * (canvas.width - imgWidth);
-  const y = Math.random() * (canvas.height - imgHeight);
-  return { x, y };
+  let isOverlapping;
+  let randomX, randomY;
+
+  do {
+    // Generate random X and Y positions
+    randomX = Math.random() * (canvas.width - imgWidth);
+    randomY = Math.random() * (canvas.height - imgHeight);
+
+    // Check if the position overlaps with preloaded images
+    isOverlapping = [...document.querySelectorAll(".preloaded-image")].some((preloaded) => {
+      const rect = preloaded.getBoundingClientRect();
+      const buffer = 20; // Optional buffer to prevent images from being too close
+
+      return randomX < rect.left + rect.width + buffer && randomX + imgWidth > rect.left - buffer && randomY < rect.top + rect.height + buffer && randomY + imgHeight > rect.top - buffer;
+    });
+
+    // Also check for overlap with already placed artworks
+    if (!isOverlapping) {
+      isOverlapping = placedArtworks.some((artwork) => {
+        const buffer = 20;
+        return randomX < artwork.x + artwork.width + buffer && randomX + imgWidth > artwork.x - buffer && randomY < artwork.y + artwork.height + buffer && randomY + imgHeight > artwork.y - buffer;
+      });
+    }
+  } while (isOverlapping); // Keep generating positions until no overlap is found
+
+  return { x: randomX, y: randomY };
 }
 
 stones.forEach((stone) => {
