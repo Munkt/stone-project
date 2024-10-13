@@ -1,3 +1,10 @@
+@font-face {
+  font-family: Pretendard;
+  src: url(../font/Pretendard-Light.subset.woff2) format(woff2), url(../font/Pretendard-Light.subset.woff) format(woff);
+  font-weight: 400;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -8,7 +15,7 @@
 
 html {
   font-size: 16px;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Space Grotesk", "Pretendard", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
@@ -23,17 +30,30 @@ body {
   position: relative;
   overflow-x: hidden;
 }
+:root {
+  --yellow: #fff980;
+  --grey: #d1d1d1;
+}
 
+a:link,
+a:visited {
+  text-decoration: none;
+  color: black;
+}
 a.button {
   display: flex;
   position: absolute;
-  padding: 0.4rem;
+  padding: 0.6rem 1rem;
   top: 2rem;
+  border-radius: 0.5rem;
   left: 50%;
   transform: translateX(-50%);
-  background-color: beige;
+  background-color: var(--yellow);
   cursor: pointer;
   z-index: 20;
+}
+a.button:hover {
+  filter: drop-shadow(0px 0px 10px #f7ff8c);
 }
 .pocket {
   position: fixed;
@@ -43,8 +63,9 @@ a.button {
   z-index: 20;
   bottom: 2rem;
   right: -20rem;
-  padding: 1rem;
+  padding: 1.2rem;
   gap: 0.8rem;
+  border-radius: 1rem;
   background-color: rgb(255, 255, 255, 0.7);
   backdrop-filter: blur(8px);
   transition: right 0.5s ease;
@@ -78,7 +99,8 @@ a.button {
 
 .stones img:nth-child(21) {
   top: 60rem;
-  left: 48rem;
+  left: 30rem;
+  animation: move3 4s linear infinite;
 }
 .stones img:nth-child(20) {
   top: 90rem;
@@ -86,11 +108,12 @@ a.button {
 }
 .stones img:nth-child(19) {
   top: 124rem;
-  left: 69rem;
+  left: 60rem;
 }
 .stones img:nth-child(18) {
   top: 160rem;
   left: 35rem;
+  animation: move2 0.5s linear infinite;
 }
 .stones img:nth-child(17) {
   top: 190rem;
@@ -103,14 +126,16 @@ a.button {
 .stones img:nth-child(15) {
   top: 264rem;
   left: 45rem;
+  animation: rotateImage 20s linear infinite;
 }
 .stones img:nth-child(14) {
   top: 310rem;
-  left: 64rem;
+  left: 54rem;
+  animation: wiggle2 0.5s ease-in-out infinite;
 }
 .stones img:nth-child(13) {
   top: 380rem;
-  left: 16rem;
+  left: 12rem;
 }
 .stones img:nth-child(12) {
   top: 420rem;
@@ -123,6 +148,7 @@ a.button {
 .stones img:nth-child(10) {
   top: 520rem;
   left: 31rem;
+  animation: move 5s ease-in-out infinite;
 }
 .stones img:nth-child(9) {
   top: 580rem;
@@ -139,6 +165,7 @@ a.button {
 .stones img:nth-child(6) {
   top: 730rem;
   left: 20rem;
+  animation: wiggle 3s ease-in-out infinite;
 }
 .stones img:nth-child(5) {
   top: 790rem;
@@ -151,6 +178,7 @@ a.button {
 .stones img:nth-child(3) {
   top: 880rem;
   left: 60rem;
+  animation: rotateImage 20s linear infinite;
 }
 .stones img:nth-child(2) {
   top: 920rem;
@@ -159,6 +187,81 @@ a.button {
 .stones img:nth-child(1) {
   top: 980rem;
   left: 16rem;
+}
+
+@keyframes move3 {
+  0% {
+    transform: translateX(0px);
+  }
+  25% {
+    transform: translateX(-250px);
+  }
+  50% {
+    transform: translateY(-250px);
+  }
+  75% {
+    transform: translateX(300px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes move2 {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  0% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes wiggle2 {
+  0% {
+    transform: rotate(2deg);
+  }
+  50% {
+    transform: rotate(-2deg);
+  }
+  100% {
+    transform: rotate(2deg);
+  }
+}
+
+@keyframes rotateImage {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-100px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes wiggle {
+  0% {
+    transform: rotate(8deg);
+  }
+  50% {
+    transform: rotate(-8deg);
+  }
+  100% {
+    transform: rotate(8deg);
+  }
 }
 
 //background forest code
@@ -610,31 +713,38 @@ a.button {
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding: 2rem 2.8rem 2.5rem 2.8rem;
-  width: 32rem;
-  gap: 1rem;
+  padding: 2rem 2.8rem 2.8rem 2.8rem;
+  width: 45rem;
+  gap: 1.2rem;
   background-color: white;
+  border-radius: 1rem;
 }
-.greeting div {
+.greeting p {
+  line-height: 1.35rem;
+}
+.greeting a:hover {
+  text-decoration: underline;
+}
+.circles div {
   position: absolute;
   width: 0.875rem;
   height: 0.875rem;
   border: 1.5px solid #000000;
   border-radius: 100%;
 }
-.greeting div:nth-child(1) {
+.circles div:nth-child(1) {
   left: 1.25rem;
   top: 1.25rem;
 }
-.greeting div:nth-child(2) {
+.circles div:nth-child(2) {
   top: 1.25rem;
   right: 1.25rem;
 }
-.greeting div:nth-child(3) {
+.circles div:nth-child(3) {
   bottom: 5.85rem;
   left: 1.25rem;
 }
-.greeting div:nth-child(4) {
+.circles div:nth-child(4) {
   bottom: 5.85rem;
   right: 1.25rem;
 }
@@ -644,6 +754,21 @@ a.button {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+}
+.language-switcher {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+}
+.language-switcher button {
+  all: unset;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 1rem;
+  cursor: pointer;
+}
+.language-switcher button:hover {
+  background-color: var(--yellow);
 }
 .stick {
   width: 1.875rem;

@@ -57,5 +57,3 @@ document.addEventListener("scroll", () => {
     pocket.style.right = "-20rem";
   }
 });
-
-console.log(window.scrollY);

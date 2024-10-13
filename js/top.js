@@ -6,19 +6,58 @@ const stackBtn = document.getElementById("stack");
 const resetBtn = document.getElementById("reset");
 const collection = document.getElementById("collection");
 const stones = document.querySelectorAll(".stone");
+const openCanvasBtn = document.getElementById("openCanvasBtn");
+const closeCanvasBtn = document.getElementById("closeCanvasBtn");
 
 let canvasStones = [];
+let placedArtworks = [];
 let isDragging = false;
 let dragIndex = -1;
 let offsetX, offsetY;
+
+function setCanvasResolution() {
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.getBoundingClientRect();
+
+  // Set the canvas resolution based on the device pixel ratio for better quality
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+
+  // Keep the CSS width and height the same as the original dimensions
+  canvas.style.width = `${rect.width}px`;
+  canvas.style.height = `${rect.height}px`;
+
+  // Scale the context for better resolution rendering
+  ctx.scale(dpr, dpr);
+
+  // Enable image smoothing for smoother graphics
+  ctx.imageSmoothingEnabled = true;
+}
+
+function getMousePos(canvas, event) {
+  const rect = canvas.getBoundingClientRect();
+  const dpr = window.devicePixelRatio || 1;
+  return {
+    x: (event.clientX - rect.left) * dpr, // Adjust for pixel ratio
+    y: (event.clientY - rect.top) * dpr, // Adjust for pixel ratio
+  };
+}
+
+window.onload = () => {
+  setCanvasResolution();
+  loadFromLocalStorage();
+};
+
+// Load artworks from localStorage when the page loads
+window.onload = loadFromLocalStorage;
 
 document.getElementById("goDown").addEventListener("click", function () {
   window.location.href = "./index.html"; // Redirect to the link
 });
 
 function toggleCanvas() {
-  // 캔버스를 열고 닫는 함수
   canvasPocket.classList.toggle("active");
+
   openCanvasBtn.style.display = canvasPocket.classList.contains("active") ? "none" : "block";
   closeCanvasBtn.style.display = canvasPocket.classList.contains("active") ? "block" : "none";
 
@@ -26,11 +65,11 @@ function toggleCanvas() {
     drawTextIfEmpty();
   }
 }
+
 openCanvasBtn.addEventListener("click", toggleCanvas);
 closeCanvasBtn.addEventListener("click", toggleCanvas);
 
 function drawTextIfEmpty() {
-  // 안내 문구를 그리는 함수
   if (canvasStones.length === 0) {
     ctx.font = "15px Arial";
     ctx.fillStyle = "#B3B3B3";
@@ -40,11 +79,8 @@ function drawTextIfEmpty() {
 }
 
 function drawStones() {
-  // Clear the canvas before redrawing
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-
   if (canvasStones.length === 0) {
-    // If no stones are placed, show the guide text
     drawTextIfEmpty();
   } else {
     canvasStones.forEach((stone) => {
@@ -59,30 +95,18 @@ function getRandomPosition(imgWidth, imgHeight) {
   return { x, y };
 }
 
-function getRandomPosition() {
-  const x = Math.floor(Math.random() * (canvas.width - 50));
-  const y = Math.floor(Math.random() * (canvas.height - 50));
-  return { x, y };
-}
-
 stones.forEach((stone) => {
   stone.addEventListener("click", (e) => {
     const img = new Image();
     img.src = e.target.src;
 
     img.onload = () => {
-      // Get the original width and height of the image
       const originalWidth = img.naturalWidth;
       const originalHeight = img.naturalHeight;
-
-      // Define the max size for the image on the canvas (you can adjust this)
-      const maxSize = 50;
-
-      // Calculate the aspect ratio
+      const maxSize = 65;
       const aspectRatio = originalWidth / originalHeight;
-
-      // Calculate the new width and height based on the aspect ratio
       let newWidth, newHeight;
+
       if (originalWidth > originalHeight) {
         newWidth = maxSize;
         newHeight = maxSize / aspectRatio;
@@ -91,10 +115,8 @@ stones.forEach((stone) => {
         newWidth = maxSize * aspectRatio;
       }
 
-      // Get random position for the stone
       const randomPosition = getRandomPosition(newWidth, newHeight);
 
-      // Push the stone image to the canvasStones array
       canvasStones.push({
         img: img,
         x: randomPosition.x,
@@ -103,7 +125,6 @@ stones.forEach((stone) => {
         height: newHeight,
       });
 
-      // Redraw the canvas with the new stone
       drawStones();
     };
   });
@@ -123,8 +144,6 @@ function isMouseOnStone(mousePos, stone) {
 
 canvas.addEventListener("mousedown", (e) => {
   const mousePos = getMousePos(canvas, e);
-
-  // Check if mouse is on any stone
   for (let i = 0; i < canvasStones.length; i++) {
     if (isMouseOnStone(mousePos, canvasStones[i])) {
       isDragging = true;
@@ -150,32 +169,32 @@ canvas.addEventListener("mouseup", () => {
   dragIndex = -1;
 });
 
-let placedArtworks = [];
-
 stackBtn.addEventListener("click", () => {
-  const message = messageInput.value.trim(); // Get message input value
+  const message = messageInput.value.trim();
   if (!message && canvasStones.length === 0) {
-    alert("Add a something before stacking.");
+    alert("Add something before stacking.");
     return;
   }
 
   const canvasPocket = document.getElementById("canvasPocket");
-  canvasPocket.style.display = "none";
+
+  if (canvasPocket.classList.contains("active")) {
+    toggleCanvas();
+  }
 
   const artworkImage = new Image();
   artworkImage.src = canvas.toDataURL("image/png");
 
-  const artworkElement = document.createElement("div"); // Create a div to hold the image
-  artworkElement.style.position = "absolute"; // Allow random positioning
+  const artworkElement = document.createElement("div");
+  artworkElement.style.position = "absolute";
   artworkElement.style.width = "200px";
   artworkElement.style.marginBottom = "1rem";
 
   let randomX, randomY;
   let isOverlapping = true;
 
-  // Check for overlap and regenerate position if needed
   do {
-    randomX = Math.random() * (document.documentElement.clientWidth * 2 - 220); // 200vw width
+    randomX = Math.random() * (document.documentElement.clientWidth * 2 - 220);
     randomY = Math.random() * (window.innerHeight - 240);
 
     isOverlapping = placedArtworks.some((artwork) => {
@@ -184,54 +203,56 @@ stackBtn.addEventListener("click", () => {
     });
   } while (isOverlapping);
 
-  // Store the new artwork's position and dimensions in placedArtworks
   placedArtworks.push({
     x: randomX,
     y: randomY,
     width: 200,
     height: 200,
+    src: artworkImage.src,
+    message: message,
   });
 
-  artworkElement.style.left = `${randomX}px`; // Set final random X position
-  artworkElement.style.top = `${randomY}px`; // Set final random Y position
+  saveToLocalStorage();
 
-  artworkElement.appendChild(artworkImage); // Add the canvas image
+  artworkElement.style.left = `${randomX}px`;
+  artworkElement.style.top = `${randomY}px`;
+  artworkElement.appendChild(artworkImage);
 
   if (message) {
-    const tooltip = document.createElement("div"); // Create a tooltip element
+    const tooltip = document.createElement("div");
     tooltip.textContent = message;
-    tooltip.style.position = "fixed"; // Use fixed positioning for tooltip
-    tooltip.style.backgroundColor = "rgba(255, 255, 255, 0.8)";
-    tooltip.style.width = "10rem";
-    tooltip.style.padding = "5px 10px";
-    tooltip.style.border = "1px solid #ddd";
-    tooltip.style.boxShadow = "0px 2px 4px rgba(0, 0, 0, 0.2)";
-    tooltip.style.display = "none"; // Hide tooltip initially
-    tooltip.style.zIndex = "100"; // Ensure it stays on top
-    document.body.appendChild(tooltip); // Add tooltip to the document body
+    //tooltip styling
+    tooltip.style.position = "fixed";
+    tooltip.style.backgroundColor = "rgba(255, 255, 255, 0.6)";
+    tooltip.style.padding = "0.6rem 1rem";
+    tooltip.style.borderRadius = "0.5rem";
+    tooltip.style.display = "none";
+    tooltip.style.zIndex = "100";
+    tooltip.style.whiteSpace = "normal"; // Allow text to wrap
+    tooltip.style.maxWidth = "20rem"; // Max width is 20rem
+    tooltip.style.wordBreak = "break-word"; // Break long words
 
-    // Show tooltip on hover
+    document.body.appendChild(tooltip);
+
     artworkImage.addEventListener("mouseover", () => {
       tooltip.style.display = "block";
     });
 
-    // Move the tooltip with the mouse
     artworkImage.addEventListener("mousemove", (e) => {
-      tooltip.style.top = `${e.clientY + 15}px`; // 15px offset from the mouse
-      tooltip.style.left = `${e.clientX + 15}px`; // 15px offset from the mouse
+      tooltip.style.top = `${e.clientY + 15}px`;
+      tooltip.style.left = `${e.clientX + 15}px`;
     });
 
-    // Hide the tooltip when the mouse leaves the image
     artworkImage.addEventListener("mouseout", () => {
       tooltip.style.display = "none";
     });
   }
 
-  collection.appendChild(artworkElement); // Add the artwork to the collection
+  collection.appendChild(artworkElement);
 
   canvasStones = [];
   drawStones();
-  messageInput.value = ""; // Clear message input
+  messageInput.value = "";
 });
 
 resetBtn.addEventListener("click", () => {
@@ -239,3 +260,58 @@ resetBtn.addEventListener("click", () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawTextIfEmpty();
 });
+
+// Save artworks to localStorage
+function saveToLocalStorage() {
+  localStorage.setItem("placedArtworks", JSON.stringify(placedArtworks));
+}
+
+// Load artworks from localStorage and render them
+function loadFromLocalStorage() {
+  const savedArtworks = localStorage.getItem("placedArtworks");
+  if (savedArtworks) {
+    placedArtworks = JSON.parse(savedArtworks);
+
+    placedArtworks.forEach((artwork) => {
+      const artworkImage = new Image();
+      artworkImage.src = artwork.src;
+
+      const artworkElement = document.createElement("div");
+      artworkElement.style.position = "absolute";
+      artworkElement.style.width = "200px";
+      artworkElement.style.left = `${artwork.x}px`;
+      artworkElement.style.top = `${artwork.y}px`;
+      artworkElement.appendChild(artworkImage);
+
+      if (artwork.message) {
+        const tooltip = document.createElement("div");
+        tooltip.textContent = artwork.message;
+        tooltip.style.position = "fixed";
+        tooltip.style.backgroundColor = "rgba(255, 255, 255, 0.6)";
+        tooltip.style.padding = "0.6rem 1rem";
+        tooltip.style.borderRadius = "0.5rem";
+        tooltip.style.display = "none";
+        tooltip.style.zIndex = "100";
+        tooltip.style.whiteSpace = "normal"; // Allow text to wrap
+        tooltip.style.maxWidth = "20rem"; // Max width is 20rem
+        tooltip.style.wordBreak = "break-word"; // Break long words
+        document.body.appendChild(tooltip);
+
+        artworkImage.addEventListener("mouseover", () => {
+          tooltip.style.display = "block";
+        });
+
+        artworkImage.addEventListener("mousemove", (e) => {
+          tooltip.style.top = `${e.clientY + 15}px`;
+          tooltip.style.left = `${e.clientX + 15}px`;
+        });
+
+        artworkImage.addEventListener("mouseout", () => {
+          tooltip.style.display = "none";
+        });
+      }
+
+      collection.appendChild(artworkElement);
+    });
+  }
+}
