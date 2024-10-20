@@ -94,7 +94,7 @@ function drawTextIfEmpty() {
     ctx.font = "15px Arial";
     ctx.fillStyle = "#B3B3B3";
     ctx.textAlign = "center";
-    ctx.fillText("Add stones to start stacking", canvas.width / 2, canvas.height / 2);
+    ctx.fillText("Click and add stones", canvas.width / 2, canvas.height / 2);
   }
 }
 

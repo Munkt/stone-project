@@ -51,9 +51,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("scroll", () => {
   const pocket = document.querySelector(".pocket");
-  if (window.scrollY < 15500) {
+  if (window.scrollY < 15900) {
     pocket.style.right = "2rem";
   } else {
     pocket.style.right = "-20rem";
   }
+});
+
+//click for more
+document.addEventListener("DOMContentLoaded", () => {
+  const introElements = document.querySelectorAll(".intro");
+  const clickMore = document.getElementById("clickformore");
+  let currentIntroIndex = 0;
+
+  // Initially hide all intro elements except the first one
+  introElements.forEach((intro, index) => {
+    if (index !== 0) {
+      intro.style.display = "none";
+    }
+  });
+
+  clickMore.addEventListener("click", () => {
+    if (currentIntroIndex < introElements.length - 1) {
+      currentIntroIndex++;
+      introElements[currentIntroIndex].style.display = "block"; // Show the next intro element
+    }
+
+    // If the last element is shown, hide the clickMore button
+    if (currentIntroIndex === introElements.length - 1) {
+      clickMore.style.display = "none";
+    }
+  });
 });

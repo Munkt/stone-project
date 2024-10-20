@@ -63,8 +63,8 @@ a.button:hover {
   z-index: 20;
   bottom: 2rem;
   right: -20rem;
-  padding: 1.2rem;
-  gap: 0.8rem;
+  padding: 1.5rem;
+  gap: 0.3rem;
   border-radius: 1rem;
   background-color: rgb(255, 255, 255, 0.7);
   backdrop-filter: blur(8px);
@@ -109,6 +109,7 @@ a.button:hover {
 .stones img:nth-child(19) {
   top: 124rem;
   left: 60rem;
+  animation: wiggle3 2s linear infinite;
 }
 .stones img:nth-child(18) {
   top: 160rem;
@@ -122,6 +123,7 @@ a.button:hover {
 .stones img:nth-child(16) {
   top: 230rem;
   left: 12rem;
+  animation: move2 3s linear infinite;
 }
 .stones img:nth-child(15) {
   top: 264rem;
@@ -148,45 +150,121 @@ a.button:hover {
 .stones img:nth-child(10) {
   top: 520rem;
   left: 31rem;
-  animation: move 5s ease-in-out infinite;
+  animation: move 1.5s ease-in-out infinite;
 }
 .stones img:nth-child(9) {
   top: 580rem;
-  left: 64rem;
+  left: 58rem;
+  animation: moveDiagonal 4s ease-in-out infinite;
 }
 .stones img:nth-child(8) {
   top: 620rem;
   left: 24rem;
+  animation: rotateImage 20s linear infinite;
 }
 .stones img:nth-child(7) {
-  top: 695rem;
+  top: 685rem;
   left: 58rem;
 }
 .stones img:nth-child(6) {
   top: 730rem;
-  left: 20rem;
-  animation: wiggle 3s ease-in-out infinite;
+  left: 24rem;
+  animation: wiggle 0.5s ease-in-out infinite;
 }
 .stones img:nth-child(5) {
-  top: 790rem;
-  left: 8rem;
+  top: 820rem;
+  left: 15rem;
+  animation: moveVertical 3s ease-in-out infinite;
 }
 .stones img:nth-child(4) {
-  top: 823rem;
+  top: 840rem;
   left: 24rem;
 }
 .stones img:nth-child(3) {
   top: 880rem;
-  left: 60rem;
-  animation: rotateImage 20s linear infinite;
+  left: 50rem;
+  animation: rotateAndMove 5s ease-in-out infinite;
 }
 .stones img:nth-child(2) {
-  top: 920rem;
-  left: 45rem;
+  top: 940rem;
+  left: 30rem;
+  animation: move4 7s linear infinite;
 }
 .stones img:nth-child(1) {
-  top: 980rem;
+  top: 990rem;
   left: 16rem;
+  animation: wiggle3 2s linear infinite;
+}
+@keyframes moveDiagonal {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translate(-850px, -400px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@keyframes moveVertical {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-900px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@keyframes rotateAndMove {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(-700px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+@keyframes wiggle3 {
+  0%,
+  7% {
+    transform: rotateZ(0);
+  }
+  15% {
+    transform: rotateZ(-15deg);
+  }
+  20% {
+    transform: rotateZ(10deg);
+  }
+  25% {
+    transform: rotateZ(-10deg);
+  }
+  30% {
+    transform: rotateZ(6deg);
+  }
+  35% {
+    transform: rotateZ(-4deg);
+  }
+  40%,
+  100% {
+    transform: rotateZ(0);
+  }
+}
+@keyframes move4 {
+  0% {
+    transform: translateX(0px);
+    rotate: 0deg;
+  }
+  50% {
+    transform: translateX(-500px);
+  }
+  100% {
+    transform: translateX(0px);
+    rotate: 360deg;
+  }
 }
 
 @keyframes move3 {
@@ -212,7 +290,7 @@ a.button:hover {
     transform: translateX(0);
   }
   50% {
-    transform: translateX(5px);
+    transform: translateX(180px);
   }
   0% {
     transform: translateX(0);
@@ -713,14 +791,14 @@ a.button:hover {
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding: 2rem 2.8rem 2.8rem 2.8rem;
-  width: 45rem;
+  padding: 1.5rem 1rem 2.5rem 0.5rem;
+  width: 40rem;
   gap: 1.2rem;
   background-color: white;
   border-radius: 1rem;
 }
 .greeting p {
-  line-height: 1.35rem;
+  line-height: 1.5rem;
 }
 .greeting a:hover {
   text-decoration: underline;
@@ -741,15 +819,15 @@ a.button:hover {
   right: 1.25rem;
 }
 .circles div:nth-child(3) {
-  bottom: 5.85rem;
+  bottom: 4.3rem;
   left: 1.25rem;
 }
 .circles div:nth-child(4) {
-  bottom: 5.85rem;
+  bottom: 4.3rem;
   right: 1.25rem;
 }
 .greeting h2 {
-  font-size: 30px;
+  font-size: 32px;
   font-family: "Space Grotesk", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -770,9 +848,40 @@ a.button:hover {
 .language-switcher button:hover {
   background-color: var(--yellow);
 }
+.intro {
+  display: flex;
+  flex-direction: column;
+}
+.intro h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+#clickformore {
+  color: #afafaf;
+  animation: textcolor 2s linear infinite;
+  cursor: pointer;
+}
+@keyframes textcolor {
+  0% {
+    color: #00ff36;
+  }
+  25% {
+    color: #52c3c6;
+  }
+  50% {
+    color: #018010;
+  }
+  75% {
+    color: #1dc24f;
+  }
+  100% {
+    color: #00ff36;
+  }
+}
 .stick {
-  width: 1.875rem;
-  height: 4.5rem;
+  width: 2.4rem;
+  height: 3rem;
   background: rgb(203, 203, 203);
   background: linear-gradient(180deg, rgba(203, 203, 203, 1) 0%, rgba(254, 254, 254, 1) 21%);
 }
