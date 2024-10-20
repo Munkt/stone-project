@@ -83,3 +83,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+function checkWindowSize() {
+  const mobileMessage = document.querySelector(".mobile-message");
+  if (window.innerWidth < 768) {
+    // 가로 768px 이하일 때 메시지 표시
+    mobileMessage.style.display = "flex";
+    document.body.style.overflow = "hidden"; // 모바일에서 다른 내용 스크롤 방지
+  } else {
+    mobileMessage.style.display = "none";
+    document.body.style.overflow = "auto"; // 데스크탑에서는 스크롤 가능하게
+  }
+}
+
+// 초기 로딩 시 사이즈 체크
+checkWindowSize();
+
+// 창 크기 변경 시마다 사이즈 체크
+window.addEventListener("resize", checkWindowSize);

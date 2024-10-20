@@ -34,6 +34,16 @@ body {
   overflow-x: scroll;
 }
 
+.slide {
+  display: flex;
+  position: fixed;
+  flex-direction: row;
+  right: 2rem;
+  bottom: 2.4rem;
+  z-index: 10;
+  gap: 0.3rem;
+  color: white;
+}
 .btnBar {
   display: flex;
   flex-direction: row;
