@@ -212,8 +212,14 @@ canvas.addEventListener("mouseup", () => {
   dragIndex = -1;
 });
 
+let positionIndex = 0; // 현재 좌표 인덱스를 저장하는 변수
+const positions = [
+  { x: 490, y: 300 }, // 첫 번째 좌표
+  { x: 980, y: 550 }, // 두 번째 좌표
+];
+
 stackBtn.addEventListener("click", () => {
-  //캔버스 안내 메세지
+  // 캔버스 안내 메시지
   const message = messageInput.value.trim();
   if (!message && canvasStones.length === 0) {
     alert("Add something before stacking.");
@@ -229,70 +235,49 @@ stackBtn.addEventListener("click", () => {
   const artworkImage = new Image();
   artworkImage.src = canvas.toDataURL("image/png");
 
+  // 현재 좌표 인덱스를 사용하여 위치 지정
+  const position = positions[positionIndex];
   const artworkElement = document.createElement("div");
   artworkElement.style.position = "absolute";
   artworkElement.style.width = "200px";
   artworkElement.style.marginBottom = "1rem";
-
-  let randomX, randomY;
-  let isOverlapping = true;
-
-  do {
-    randomX = Math.random() * (document.documentElement.clientWidth * 2 - 220);
-    randomY = Math.random() * (window.innerHeight - 240);
-
-    isOverlapping = placedArtworks.some((artwork) => {
-      const buffer = 20;
-      return randomX < artwork.x + artwork.width + buffer && randomX + 200 > artwork.x - buffer && randomY < artwork.y + artwork.height + buffer && randomY + 200 > artwork.y - buffer;
-    });
-  } while (isOverlapping);
-
-  placedArtworks.push({
-    x: randomX,
-    y: randomY,
-    width: 200,
-    height: 200,
-    src: artworkImage.src,
-    message: message,
-  });
-
-  saveToLocalStorage();
-
-  artworkElement.style.left = `${randomX}px`;
-  artworkElement.style.top = `${randomY}px`;
+  artworkElement.style.left = `${position.x}px`;
+  artworkElement.style.top = `${position.y}px`;
   artworkElement.appendChild(artworkImage);
 
   if (message) {
     const tooltip = document.createElement("div");
     tooltip.textContent = message;
-    //tooltip styling
     tooltip.style.position = "fixed";
     tooltip.style.backgroundColor = "rgba(255, 255, 255, 0.6)";
     tooltip.style.padding = "0.6rem 1rem";
     tooltip.style.borderRadius = "0.5rem";
     tooltip.style.display = "none";
     tooltip.style.zIndex = "100";
-    tooltip.style.whiteSpace = "normal"; // Allow text to wrap
-    tooltip.style.maxWidth = "20rem"; // Max width is 20rem
-    tooltip.style.wordBreak = "break-word"; // Break long words
+    tooltip.style.whiteSpace = "normal"; // 텍스트 줄바꿈
+    tooltip.style.maxWidth = "20rem";
+    tooltip.style.wordBreak = "break-word";
 
     document.body.appendChild(tooltip);
 
-    artworkImage.addEventListener("mouseover", () => {
+    artworkElement.addEventListener("mouseover", () => {
       tooltip.style.display = "block";
     });
 
-    artworkImage.addEventListener("mousemove", (e) => {
+    artworkElement.addEventListener("mousemove", (e) => {
       tooltip.style.top = `${e.clientY + 15}px`;
       tooltip.style.left = `${e.clientX + 15}px`;
     });
 
-    artworkImage.addEventListener("mouseout", () => {
+    artworkElement.addEventListener("mouseout", () => {
       tooltip.style.display = "none";
     });
   }
 
   collection.appendChild(artworkElement);
+
+  // 다음 클릭 시 사용할 좌표로 인덱스를 변경
+  positionIndex = (positionIndex + 1) % positions.length;
 
   canvasStones = [];
   drawStones();

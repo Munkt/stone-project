@@ -1,27 +1,43 @@
 // Translations for English
 const translations = {
   en: {
-    p1: `Do you enjoy hiking? Ascend a Website offers a digital refuge from the endless scroll-down content we encounter daily. You’ve probably had the experience of casually opening an app, endlessly scrolling through content, and realizing that the sun has already begun to set. While the apps we use every day provide us with information and entertainment, their never-ending downhill flow gradually encroaches upon our daily lives. But what would a space look like that moves in the opposite direction from the familiar concept of scrolling down?`,
-    p2: `Hiking is a strenuous activity that defies gravity as we make our way to the summit, but the reward at the top is a moment of peace, away from the chaos of everyday life, and a sense of accomplishment. At the peak, you’ll often find stone towers meticulously stacked by previous hikers, much like an entry in a guestbook. While we don’t always know the meaning behind these towers, the time and effort put into them reflect the sincerity of each person’s intent.`,
-    p3: `What if we applied the concept of hiking to digital spaces, which are often designed to prioritize user convenience? In this space, instead of scrolling down, you embark on an upward journey. As users ascend, they collect stones, which they can use to build their own tower at the summit. What stones you choose and how you construct your tower is entirely up to you. Through this process, visitors can leave their mark on the site and connect loosely with others who have made the same ascent.`,
+    p1: `This site starts from the bottom, not the top. </br>
+    So, instead of scrolling down, “scroll up.” Ascend as if hiking, </br>
+    collecting stones along the way, and at the peak, build your own tower.</br>
+     Rediscover the digital space with this simple reversal.`,
+
+    p2: `We've all mindlessly scrolled on our phones, only to find the day </br>
+    slipping away. The small screen offers endless information and fun, </br>
+    yet its downward path slowly takes over our lives. Going down is easy,</br>
+    but rarely do we rise within that small screen.`,
+
+    p3: `Think of hiking. It’s about defying gravity, an effortful journey.</br>
+    Yet only those who reach the summit can see the view and the stone</br>
+    towers left behind by others. There’s a vitality felt only at the end </br>
+    of this hard-earned climb.`,
+
+    p4: `Make the climb on this site; pick up stones along the way.</br>
+     In a world of scrolling down, experience a unique "scroll-up" journey </br>
+     and express your energy by leaving your stone tower. Let’s meet up there!`,
   },
   ko: {
-    p1: `등산 좋아하시나요? Ascend a Website는 끊임없이 스크롤 다운하는 콘텐츠에서의 디지털 </br>
-    도피처입니다. 앱을 무심코 켜고 들어가서, 콘텐츠를 끊임없이 스크롤 다운했더니 어느새 해가 </br>
-    뉘엿뉘엿 저물어 있는 경험을 해본 적이 있을 겁니다. 우리가 매일 접속하는 앱은 여러 가지 정보와 </br>
-    재미를 제공하지만, 그들이 만들어 놓은 끝없는 내리막길은 우리의 일상을 조금씩 잠식해 가고 </br>
-    있습니다. 우리에게 익숙한 스크롤 다운 개념과 반대되는 공간은 어떤 모습일까요?`,
+    p1: `이 사이트는 위가 아닌 아래에서부터 시작합니다. 그러니 ‘스크롤 다운’ 대신, ‘스크롤 업’.</br>
+    등산하듯 올라가 보세요. 올라가는 길에 돌을 수집하고, 정상에 도달하면 자신만의 탑을</br>
+    쌓을 수 있습니다. 평소와 다른 하나의 행동을 통해, 디지털 공간을 다시 인식해 보세요.`,
 
-    p2: `등산은 중력을 거슬러 정상을 향해 올라가는 고생스러운 일이지만, 그 끝에서 일상의 번잡함에서 </br>
-    벗어나 잠시 숨을 고르고 뿌듯함을 느낄 수 있습니다. 정상에는 이 길을 다녀간 사람들이 방명록처럼 </br>
-    쌓아놓은 돌탑들이 빼곡히 서 있습니다. 어떤 의미가 깃들어 있는지 알 수 없지만, 오랜 시간 </br>
-    공들인 만큼 저마다의 간절함이 담겨있다는 것을 알 수 있습니다.`,
+    p2: `무심코 핸드폰을 켜고 끝없이 스크롤을 내리다 해가 뉘엿뉘엿 지는 하루 끝을 </br>
+    맞이한 경험, 모두 있을 겁니다. 작은 화면 속 세상은 우리에게 수많은 여러 가지 정보와 </br>
+    재미를 제공하지만, 그것이 만들어놓은 끝없는 내리막길은 우리의 일상을 잠식해 가고 있죠. </br>
+    내려가는 것은 참 쉬운데, 그 작은 화면 속에서 좀처럼 올라가진 않습니다. `,
 
-    p3: `사용자 중심의 편리함을 강조하는 디지털 공간 속에서 등산이라는 행동을 대입해 보면 어떨까요.</br>
-    우리에게 익숙한 스크롤 다운 방식이 아닌, 그 반대의 여정입니다. 사용자는 오르며 돌을 모으고, </br>
-    정상에서 그 돌로 자신만의 탑을 쌓습니다. 어떤 돌을 선택하고 어떤 방식으로 탑을 쌓을지는 </br>
-    전적으로 방문자의 몫입니다. 이러한 방식으로 사이트를 다녀간 사람들은 방문의 흔적을 남기고 </br>
-    느슨하게 연결될 수 있습니다.`,
+    p3: `그러나 등산을 떠올려보세요. 등산은 중력을 거슬러 위로 올라가는 일입니다.</br>
+    그야말로 사서 고생하는 일이죠. 하지만 정상에 오른 자만 볼 수 있는 절경과,</br>
+    그들이 방명록처럼 남긴 빼곡한 돌탑을 바라보면 일종의 활력이 느껴지곤 합니다.</br>
+    애써 오른 행위 끝에야만 느낄 수 있는 무언가 가요.`,
+
+    p4: `이 사이트를 애써 ‘올라가'보세요. 올라가는 길에 돌도 주워보시고요.</br>
+    ‘스크롤 다운'하는 일상 속에서 ‘스크롤 업'을 해낸 당신만의 경험과 </br>
+    생기(生氣)를 돌탑으로 표현해 남겨주세요. 우리 저기 위에서 만납시다. `,
   },
 };
 
@@ -31,6 +47,7 @@ function switchLanguage(lang) {
   document.getElementById("p1").innerHTML = translations[lang].p1;
   document.getElementById("p2").innerHTML = translations[lang].p2;
   document.getElementById("p3").innerHTML = translations[lang].p3;
+  document.getElementById("p4").innerHTML = translations[lang].p4;
 
   localStorage.setItem("language", lang); // Save the selected language in localStorage
 }

@@ -792,13 +792,13 @@ a.button:hover {
   flex-direction: column;
   text-align: center;
   padding: 1.5rem 1rem 2.5rem 0.5rem;
-  width: 40rem;
-  gap: 1.2rem;
+  width: 45rem;
+  gap: 1rem;
   background-color: white;
   border-radius: 1rem;
 }
 .greeting p {
-  line-height: 1.5rem;
+  line-height: 1.4rem;
 }
 .greeting a:hover {
   text-decoration: underline;
@@ -836,7 +836,7 @@ a.button:hover {
 .language-switcher {
   display: flex;
   justify-content: center;
-  gap: 0.6rem;
+  gap: 0.3rem;
 }
 .language-switcher button {
   all: unset;
@@ -846,7 +846,7 @@ a.button:hover {
   cursor: pointer;
 }
 .language-switcher button:hover {
-  background-color: var(--yellow);
+  background-color: #a2f3ab;
 }
 .intro {
   display: flex;
